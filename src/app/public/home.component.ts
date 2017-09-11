@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {Router} from "@angular/router";
 
 declare let AWS: any;
 declare let AWSCognito: any;
@@ -16,8 +17,11 @@ export class AboutComponent {
     templateUrl: './landinghome.html'
 })
 export class HomeLandingComponent {
-    constructor() {
+    constructor(public router: Router) {
         console.log("HomeLandingComponent constructor");
+
+        // TODO: Redirecting for now. Ideally this should be the component to showcase little apple stuff
+        this.router.navigate(['/home/login']);
     }
 }
 

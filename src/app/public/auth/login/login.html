@@ -1,30 +1,35 @@
-<form class="form-signin" method="POST" action="#" role="form">
-    <div class="form-group">
-        <h2>Login</h2>
+<!-- Icon -->
+<div class="home-container mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--6-col-tablet">
+        <img class="center" src="../../assets/img/apple-touch-icon-114x114.png" alt="">
     </div>
-    <div *ngIf="errorMessage!=null" class="alert alert-danger">
-        {{ errorMessage }}
-    </div>
-    <div class="form-group">
-        <label class="control-label" for="signupEmail">Email</label>
-        <input id="signupEmail" required type="email" maxlength="100" class="form-control" [(ngModel)]="email"
-               [ngModelOptions]="{standalone: true}">
-    </div>
+    <div class="mdl-layout-spacer"></div>
+</div>
 
-    <div class="form-group">
-        <label class="control-label" for="signupPassword">Password</label>
-        <input id="signupPassword" required type="password" maxlength="25" class="form-control"
-               length="40" [(ngModel)]="password" [ngModelOptions]="{standalone: true}">
+<!-- Login Form -->
+<div class="home-container mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="home-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--4-col mdl-cell--6-col-tablet">
+        <div class="mdl-form">
+            <form>
+                <div class="form-group">
+                    <h4>Staff Login</h4>
+                </div>
+
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="username" />
+                    <label class="mdl-textfield__label" for="username">Username</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="password" id="userpass" />
+                    <label class="mdl-textfield__label" for="userpass">Password</label>
+                </div>
+            </form>
+        </div>
+        <button (click)="onLogin()" class="login-btn mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Login</button>
     </div>
-    <div class="form-group">
-        <button (click)="onLogin()" id="signupSubmit" type="submit" class="btn btn-info btn-block">
-            Login
-        </button>
-    </div>
-    <hr>
-    <p><a [routerLink]="['/home/register']"> <i class="fa fa-fw fa-group"></i> Register</a>
-        <a [routerLink]="['/home/forgotPassword']"> <i class="fa fa-fw fa-group"></i> Forgot Password?</a><br/>
-        <a [routerLink]="['/home/resendCode']"> <i class="fa fa-fw fa-group"></i> Resend Confirmation Code</a>
-    </p>
-</form>
+    <div class="mdl-layout-spacer"></div>
+</div>
+
 

@@ -1,0 +1,43 @@
+.layout {
+    background: url(../img/banner.jpg);
+}
+
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.login-btn{
+    margin: 14px auto 14px auto !important;
+    display: block !important;
+    width: 124px;
+    color: #ffffff !important;
+}
+
+.home-footer {
+    padding-left: 40px;
+}
+
+.home-container {
+    max-width: 1600px;
+    width: calc(100% - 16px);
+    margin: 0 auto;
+}
+
+.home-main {
+    margin-top: 12vh;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+
+.home-content {
+    border-radius: 2px;
+    padding: 20px 56px;
+    margin-bottom: 80px;
+}
+
+.home-content h3 {
+    margin-top: 48px;
+}
