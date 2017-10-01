@@ -1,0 +1,23 @@
+<div *ngIf="!this.selectedAction; else selected;">
+    <div class="mdl-card__title">
+        <img src="{{student.profileUrl}}" style="max-width: 100%; height: auto;" />
+    </div>
+    <div class="mdl-dialog__content">Hi, {{student.name}}!</div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button mdl-button-type="raised" mdl-colored="primary" (click)="checkout(student)">Check-out</button>
+        <button mdl-button mdl-button-type="raised" mdl-colored="primary" (click)="checkin(student)">Check-in</button>
+    </div>
+</div>
+<ng-template #selected>
+    <div class="mdl-dialog__content">
+        <div *ngIf="this.action == 0">Check-in for {{student.name}}?</div>
+        <div *ngIf="this.action == 1">Check-out for {{student.name}}</div>
+    </div>
+    <div class="mdl-dialog__actions">
+        <button mdl-button mdl-button-type="raised" (click)="deselectAction()">No</button>
+        <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple="" (click)="sendNotification()">Yes!</button>
+    </div>
+</ng-template>
+
+
+

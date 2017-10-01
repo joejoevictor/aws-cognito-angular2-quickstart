@@ -1,0 +1,16 @@
+<div class="mdl-grid">
+    <div *ngFor="let student of studentArray" class="mdl-cell mdl-cell--3-col mdl-cell--12-col-tablet mdl-cell--12-col-phone">
+        <a (click)="showAttendanceDialog(student)">
+            <div class="check-in-card mdl-card mdl-shadow--2dp" [ngStyle]="{
+'background': 'url(' + student.profileUrl + ') center / cover'
+}">
+                <div class="mdl-card__title mdl-card--expand"></div>
+                <div class="mdl-card__actions">
+                    <span class="check-in-card__text">{{student.name}}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+

@@ -14,15 +14,16 @@
         <div class="mdl-form">
             <form>
                 <div class="form-group">
-                    <h4>Staff Login</h4>
+                    <h4>Little Apple Login</h4>
                 </div>
 
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="text" id="username" />
-                    <label class="mdl-textfield__label" for="username">Username</label>
+                    <input [(ngModel)]="email"  name="email" class="mdl-textfield__input" type="text" id="email" />
+                    <label class="mdl-textfield__label" for="email">Email</label>
                 </div>
+
                 <div class="mdl-textfield mdl-js-textfield">
-                    <input class="mdl-textfield__input" type="password" id="userpass" />
+                    <input [(ngModel)]="password" name="password" class="mdl-textfield__input" type="password" id="userpass" />
                     <label class="mdl-textfield__label" for="userpass">Password</label>
                 </div>
             </form>
@@ -31,5 +32,3 @@
     </div>
     <div class="mdl-layout-spacer"></div>
 </div>
-
-

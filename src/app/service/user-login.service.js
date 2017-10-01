@@ -1,9 +1,11 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var environment_1 = require("../../environments/environment");
 var core_1 = require("@angular/core");
 var amazon_cognito_identity_js_1 = require("amazon-cognito-identity-js");
@@ -18,7 +20,7 @@ var UserLoginService = (function () {
         console.log("UserLoginService: starting the authentication");
         var authenticationData = {
             Username: username,
-            Password: password
+            Password: password,
         };
         var authenticationDetails = new amazon_cognito_identity_js_1.AuthenticationDetails(authenticationData);
         var userData = {
@@ -56,7 +58,7 @@ var UserLoginService = (function () {
             },
             onFailure: function (err) {
                 callback.cognitoCallback(err.message, null);
-            }
+            },
         });
     };
     UserLoginService.prototype.forgotPassword = function (username, callback) {
@@ -117,10 +119,9 @@ var UserLoginService = (function () {
             callback.isLoggedIn("Can't retrieve the CurrentUser", false);
         }
     };
-    UserLoginService = __decorate([
-        core_1.Injectable()
-    ], UserLoginService);
     return UserLoginService;
-})();
+}());
+UserLoginService = __decorate([
+    core_1.Injectable()
+], UserLoginService);
 exports.UserLoginService = UserLoginService;
-//# sourceMappingURL=user-login.service.js.map

@@ -18,7 +18,7 @@ export class AboutComponent {
 })
 export class HomeLandingComponent {
     constructor(public router: Router) {
-        console.log("HomeLandingComponent constructor");
+        console.log('HomeLandingComponent constructor');
 
         // TODO: Redirecting for now. Ideally this should be the component to showcase little apple stuff
         this.router.navigate(['/home/login']);
@@ -32,7 +32,7 @@ export class HomeLandingComponent {
 export class HomeComponent implements OnInit {
 
     constructor() {
-        console.log("HomeComponent constructor");
+        console.log('HomeComponent constructor');
     }
 
     ngOnInit() {

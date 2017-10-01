@@ -1,9 +1,11 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var cognito_service_1 = require("./cognito.service");
 var AWS = require("aws-sdk/global");
@@ -11,7 +13,7 @@ var AWS = require("aws-sdk/global");
  * Created by Vladimir Budilov
  */
 // declare var AMA: any;
-var AwsUtil = (function () {
+var AwsUtil = AwsUtil_1 = (function () {
     function AwsUtil(cognitoUtil) {
         this.cognitoUtil = cognitoUtil;
         AWS.config.region = cognito_service_1.CognitoUtil._REGION;
@@ -20,7 +22,7 @@ var AwsUtil = (function () {
      * This is the method that needs to be called in order to init the aws global creds
      */
     AwsUtil.prototype.initAwsService = function (callback, isLoggedIn, idToken) {
-        if (AwsUtil.runningInit) {
+        if (AwsUtil_1.runningInit) {
             // Need to make sure I don't get into an infinite loop here, so need to exit if this method is running already
             console.log("AwsUtil: Aborting running initAwsService()...it's running already.");
             // instead of aborting here, it's best to put a timer
@@ -31,7 +33,7 @@ var AwsUtil = (function () {
             return;
         }
         console.log("AwsUtil: Running initAwsService()");
-        AwsUtil.runningInit = true;
+        AwsUtil_1.runningInit = true;
         var mythis = this;
         // First check if the user is authenticated already
         if (isLoggedIn)
@@ -65,17 +67,17 @@ var AwsUtil = (function () {
             callback.callback();
             callback.callbackWithParam(null);
         }
-        AwsUtil.runningInit = false;
+        AwsUtil_1.runningInit = false;
     };
     AwsUtil.prototype.addCognitoCredentials = function (idTokenJwt) {
         var creds = this.cognitoUtil.buildCognitoCreds(idTokenJwt);
         AWS.config.credentials = creds;
         creds.get(function (err) {
             if (!err) {
-                if (AwsUtil.firstLogin) {
+                if (AwsUtil_1.firstLogin) {
                     // save the login info to DDB
                     this.ddb.writeLogEntry("login");
-                    AwsUtil.firstLogin = false;
+                    AwsUtil_1.firstLogin = false;
                 }
             }
         });
@@ -91,12 +93,12 @@ var AwsUtil = (function () {
         };
         return params;
     };
-    AwsUtil.firstLogin = false;
-    AwsUtil.runningInit = false;
-    AwsUtil = __decorate([
-        core_1.Injectable()
-    ], AwsUtil);
     return AwsUtil;
-})();
+}());
+AwsUtil.firstLogin = false;
+AwsUtil.runningInit = false;
+AwsUtil = AwsUtil_1 = __decorate([
+    core_1.Injectable()
+], AwsUtil);
 exports.AwsUtil = AwsUtil;
-//# sourceMappingURL=aws.service.js.map
+var AwsUtil_1;

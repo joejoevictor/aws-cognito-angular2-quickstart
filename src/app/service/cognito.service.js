@@ -1,21 +1,23 @@
+"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var environment_1 = require("../../environments/environment");
 var amazon_cognito_identity_js_1 = require("amazon-cognito-identity-js");
 var AWS = require("aws-sdk/global");
-var CognitoUtil = (function () {
+var CognitoUtil = CognitoUtil_1 = (function () {
     function CognitoUtil() {
     }
     CognitoUtil.prototype.getUserPool = function () {
         if (environment_1.environment.cognito_idp_endpoint) {
-            CognitoUtil._POOL_DATA.endpoint = environment_1.environment.cognito_idp_endpoint;
+            CognitoUtil_1._POOL_DATA.endpoint = environment_1.environment.cognito_idp_endpoint;
         }
-        return new amazon_cognito_identity_js_1.CognitoUserPool(CognitoUtil._POOL_DATA);
+        return new amazon_cognito_identity_js_1.CognitoUserPool(CognitoUtil_1._POOL_DATA);
     };
     CognitoUtil.prototype.getCurrentUser = function () {
         return this.getUserPool().getCurrentUser();
@@ -35,14 +37,14 @@ var CognitoUtil = (function () {
     // CognitoIdentityCredentials object and store it for us. It also returns the object to the caller
     // to avoid unnecessary calls to setCognitoCreds.
     CognitoUtil.prototype.buildCognitoCreds = function (idTokenJwt) {
-        var url = 'cognito-idp.' + CognitoUtil._REGION.toLowerCase() + '.amazonaws.com/' + CognitoUtil._USER_POOL_ID;
+        var url = 'cognito-idp.' + CognitoUtil_1._REGION.toLowerCase() + '.amazonaws.com/' + CognitoUtil_1._USER_POOL_ID;
         if (environment_1.environment.cognito_idp_endpoint) {
-            url = environment_1.environment.cognito_idp_endpoint + '/' + CognitoUtil._USER_POOL_ID;
+            url = environment_1.environment.cognito_idp_endpoint + '/' + CognitoUtil_1._USER_POOL_ID;
         }
         var logins = {};
         logins[url] = idTokenJwt;
         var params = {
-            IdentityPoolId: CognitoUtil._IDENTITY_POOL_ID,
+            IdentityPoolId: CognitoUtil_1._IDENTITY_POOL_ID,
             Logins: logins
         };
         var serviceConfigs = {};
@@ -131,18 +133,18 @@ var CognitoUtil = (function () {
             }
         });
     };
-    CognitoUtil._REGION = environment_1.environment.region;
-    CognitoUtil._IDENTITY_POOL_ID = environment_1.environment.identityPoolId;
-    CognitoUtil._USER_POOL_ID = environment_1.environment.userPoolId;
-    CognitoUtil._CLIENT_ID = environment_1.environment.clientId;
-    CognitoUtil._POOL_DATA = {
-        UserPoolId: CognitoUtil._USER_POOL_ID,
-        ClientId: CognitoUtil._CLIENT_ID
-    };
-    CognitoUtil = __decorate([
-        core_1.Injectable()
-    ], CognitoUtil);
     return CognitoUtil;
-})();
+}());
+CognitoUtil._REGION = environment_1.environment.region;
+CognitoUtil._IDENTITY_POOL_ID = environment_1.environment.identityPoolId;
+CognitoUtil._USER_POOL_ID = environment_1.environment.userPoolId;
+CognitoUtil._CLIENT_ID = environment_1.environment.clientId;
+CognitoUtil._POOL_DATA = {
+    UserPoolId: CognitoUtil_1._USER_POOL_ID,
+    ClientId: CognitoUtil_1._CLIENT_ID
+};
+CognitoUtil = CognitoUtil_1 = __decorate([
+    core_1.Injectable()
+], CognitoUtil);
 exports.CognitoUtil = CognitoUtil;
-//# sourceMappingURL=cognito.service.js.map
+var CognitoUtil_1;
